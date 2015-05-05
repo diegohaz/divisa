@@ -1,10 +1,10 @@
 {
   "name": "Divisa",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A game about war and peace",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +18,6 @@
   },
   "homepage": "http://divisagame.com",
   "dependencies": {
-    "express": "^4.12.3",
-    "jade": "^1.9.2"
+    "express": "^4.12.3"
   }
 }

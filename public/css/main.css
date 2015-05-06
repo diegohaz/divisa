@@ -28,6 +28,26 @@ html, body {
   background-size: 100% 100%;
 }
 
+#level2 {
+  background: black url('/img/prison.jpg') bottom repeat-x;
+  background-size: 150px 480px;
+}
+
+#level3 {
+  background: black url('/img/level3.jpg') bottom center no-repeat;
+  background-size: 100% 100%;
+}
+
+#level4 {
+  background: black url('/img/level4.jpg') bottom center no-repeat;
+  background-size: 100% 100%;
+}
+
+#level5 {
+  background: black url('/img/level5.jpg') bottom center no-repeat;
+  background-size: 100% 100%;
+}
+
 #map {
   background-image: url('/img/map.jpg');
   width: 40vw;

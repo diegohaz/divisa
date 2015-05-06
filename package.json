@@ -2,10 +2,9 @@
   "name": "Divisa",
   "version": "1.0.0",
   "description": "A game about war and peace",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

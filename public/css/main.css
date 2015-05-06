@@ -1,0 +1,102 @@
+html, body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+}
+
+#game, .moment, .level {
+  width: 100%;
+  height: 100%;
+}
+
+.level {
+  display: none;
+}
+
+.level > * {
+  position: absolute;
+  background: center no-repeat;
+  background-size: 100% 100%;
+}
+
+#level1 {
+  display: block;
+  background: url('/img/level1.jpg') center no-repeat;
+  background-size: 100% 100%;
+}
+
+#map {
+  background-image: url('/img/map.jpg');
+  width: 40vw;
+  height: 35vh;
+}
+
+#weapons {
+  background-image: url('/img/weapons.jpg');
+  width: 25vw;
+  height: 25vh;
+}
+
+#window {
+  background-image: url('/img/window.jpg');
+  width: 25vw;
+  height: 25vh;
+}
+
+#table {
+  background-image: url('/img/table.jpg');
+  width: 60vw;
+  height: 50vh;
+}
+
+#commander {
+  background-image: url('/img/commander.jpg');
+  width: 20vw;
+  height: 20vh;
+}
+
+/* POSITIONING */
+#map {
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#weapons {
+  top: 8vh;
+  right: 16px;
+}
+
+#window {
+  top: 8vh;
+  left: 16px;
+}
+
+#table {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#commander {
+  bottom: 50vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* SOLDIER */
+#soldier {
+  background-image: url('/img/soldier.jpg');
+  background-size: 100% 100%;
+  width: 10vw;
+  height: 70vh;
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+}

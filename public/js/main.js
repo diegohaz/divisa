@@ -2,8 +2,8 @@ var currentLevelNumber = 1;
 var currentLevel = document.getElementById('level1');
 var soldier = document.getElementById('soldier');
 var keys = {
-  left: 65,
-  right: 68
+  left: 37,
+  right: 39
 };
 
 soldier.style.zoom = currentLevel.dataset.zoom;

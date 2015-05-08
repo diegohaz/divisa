@@ -151,6 +151,7 @@ Game.prototype.loadMoment = function(moment) {
 };
 
 Game.prototype.loadCurrentMoment = function() {
+  this.getCurrentMoment();
   return this.loadMoment(this.currentMoment);
 };
 

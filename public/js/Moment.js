@@ -59,6 +59,7 @@ Moment.prototype.loadScene = function(scene) {
 };
 
 Moment.prototype.loadCurrentScene = function() {
+  this.getCurrentScene();
   return this.loadScene(this.currentScene);
 };
 

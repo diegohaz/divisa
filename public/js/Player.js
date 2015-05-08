@@ -3,7 +3,6 @@ module.exports = new Player();
 function Player() {
   this.node = document.createElement('div');
   this.pos = 0;
-  this.steps = 10;
   this.zoom = 1;
 
   this.node.setAttribute('id', 'player');
@@ -15,10 +14,12 @@ Player.prototype.appendTo = function(node) {
 };
 
 Player.prototype.move = function(direction) {
+  var steps = this.node.offsetWidth/20;
+
   if (direction == 1) {
-    this.node.style.left = (this.node.offsetLeft + this.steps) + 'px';
+    this.node.style.left = (this.node.offsetLeft + steps) + 'px';
   } else if (direction == -1) {
-    this.node.style.left = (this.node.offsetLeft - this.steps) + 'px';
+    this.node.style.left = (this.node.offsetLeft - steps) + 'px';
   }
 
   this.pos = this.node.offsetLeft * this.zoom;

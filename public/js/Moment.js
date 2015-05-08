@@ -20,7 +20,7 @@ Moment.prototype.isLastScene = function() {
 Moment.prototype.getCurrentScene = function(storage) {
   storage = storage || this.storage;
 
-  if (storage && storage.length) {
+  if (storage && storage.getItem('currentScene')) {
     this.currentScene = parseInt(storage.getItem('currentScene'));
   } else if (storage) {
     storage.setItem('currentScene', this.currentScene);

@@ -104,7 +104,7 @@ Game.prototype.loadPlayer = function(player, stage) {
 Game.prototype.getCurrentMoment = function(storage) {
   storage = storage || this.storage;
 
-  if (storage && storage.length) {
+  if (storage && storage.getItem('currentMoment')) {
     this.currentMoment = parseInt(storage.getItem('currentMoment'));
   } else if (storage) {
     storage.setItem('currentMoment', this.currentMoment);

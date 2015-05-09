@@ -4,6 +4,7 @@ function Player() {
   this.node = document.createElement('div');
   this.pos = 0;
   this.zoom = 1;
+  this.reflection = null;
 
   this.node.setAttribute('id', 'player');
   this.pos = this.node.offsetLeft;
@@ -39,7 +40,20 @@ Player.prototype.getMaxPos = function() {
   return this.pos + this.node.offsetWidth * this.zoom;
 };
 
+Player.prototype.reflect = function(reflection) {
+  if (this.reflection) {
+    this.reflection.remove();
+  }
+
+  this.reflection = reflection;
+  reflection.appendTo(this.node);
+};
+
 Player.prototype.setZoom = function(zoom) {
   this.node.style.zoom = zoom;
   this.zoom = zoom;
+
+  if (this.reflection) {
+    this.reflection.remove();
+  }
 };

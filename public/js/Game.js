@@ -2,7 +2,8 @@ module.exports = new Game();
 
 function Game() {
   this.updateRate = 10;
-  this.storage = window.localStorage;
+  this.reflections = [];
+  this.letterReflections = 0;
   this.currentMoment = 0;
   this.stage  = null;
   this.player = null;
@@ -14,20 +15,42 @@ function Game() {
   };
 }
 
-Game.prototype.setControls = function(controls) {
-  this.controls = controls;
+Game.prototype.getCurrentMoment = function(returnObject) {
+  if (!(this.currentMoment in this.moments)) {
+    console.error('There is not moment ' + this.currentMoment);
+    return;
+  }
+
+  if (returnObject) {
+    return this.moments[this.currentMoment];
+  }
+
+  return this.currentMoment;
 };
 
-Game.prototype.setStage = function(stage) {
-  this.stage = stage;
+Game.prototype.setCurrentMoment = function(value) {
+  if (!(value in this.moments)) {
+    console.error('There is not moment ' + value);
+    return;
+  }
+
+  this.currentMoment = value;
 };
 
-Game.prototype.setMoments = function(moments) {
-  this.moments = moments;
+Game.prototype.getLetterReflections = function() {
+  return this.letterReflections;
 };
 
-Game.prototype.setPlayer = function(player) {
-  this.player = player;
+Game.prototype.addLetterReflection = function(reflection) {
+  if (!~this.reflections.indexOf(reflection) && this.getLetterReflections() <= this.getCurrentMoment()) {
+    this.reflections.push(reflection);
+    this.letterReflections++;
+  }
+};
+
+Game.prototype.clearReflections = function() {
+  this.reflections = [];
+  this.letterReflections = 0;
 };
 
 Game.prototype.start = function() {
@@ -58,13 +81,37 @@ Game.prototype.start = function() {
   }.bind(this));
 
   window.addEventListener('inspect', function(evt) {
-    console.log(evt.detail);
-  });
+    var Reflection = require('/js/Reflection');
+    var detail = evt.detail;
+
+    if (detail instanceof Reflection) {
+      if (detail.isLetterReflection()) {
+        this.addLetterReflection(detail);
+      }
+
+      this.player.reflect(detail)
+    }
+  }.bind(this));
+};
+
+Game.prototype.restart = function() {
+  var moment = this.getCurrentMoment(true);
+
+  moment.getCurrentScene(true).remove();
+  moment.setCurrentScene(0);
+  moment.remove();
+
+  this.clearReflections();
+  this.setCurrentMoment(0);
+  this.loadCurrentMoment();
+
+  this.player.moveTo(0);
+  this.player.node.classList.remove('moving', 'left', 'right');
 };
 
 Game.prototype.update = function() {
-  var moment = this.getCurrentMoment();
-  var scene = moment.getCurrentScene();
+  var moment = this.getCurrentMoment(true);
+  var scene = moment.getCurrentScene(true);
 
   if (this.movingLeft || this.movingRight) {
     if (moment.isFirstScene() && this.movingLeft && player.pos <= 0) {
@@ -101,92 +148,62 @@ Game.prototype.loadPlayer = function(player, stage) {
   return player;
 };
 
-Game.prototype.getCurrentMoment = function(storage) {
-  storage = storage || this.storage;
-
-  if (storage && storage.getItem('currentMoment')) {
-    this.currentMoment = parseInt(storage.getItem('currentMoment'));
-  } else if (storage) {
-    storage.setItem('currentMoment', this.currentMoment);
-  }
-
-  return this.moments[this.currentMoment];
-};
-
-Game.prototype.setCurrentMoment = function(moment, storage) {
-  storage = storage || this.storage;
-
-  if (storage) {
-    storage.setItem('currentMoment', moment);
-  }
-
-  this.currentMoment = moment;
-};
-
 Game.prototype.loadMoment = function(moment) {
-  if (!this.stage) {
-    console.error('Stage must be defined to load moment');
-    return;
-  }
-
-  if (!(moment in this.moments)) {
-    console.error('There is not moment ' + moment);
-    return;
-  }
-
-  if (moment != this.currentMoment) {
+  if (moment == this.currentMoment) {
+    var momentObj = this.getCurrentMoment(true);
+  } else {
     this.removeCurrentMoment();
+    this.setCurrentMoment(moment);
+
+    var momentObj = this.moments[moment];
   }
 
-  this.setCurrentMoment(moment)
+  momentObj.appendTo(this.stage);
 
-  moment = this.getCurrentMoment();
-  moment.appendTo(this.stage);
   var scene = this.loadCurrentScene();
 
   this.player.setZoom(scene.zoom);
   this.player.moveTo(0);
 
-  return moment;
+  return momentObj;
 };
 
 Game.prototype.loadCurrentMoment = function() {
-  this.getCurrentMoment();
-  return this.loadMoment(this.currentMoment);
+  return this.loadMoment(this.getCurrentMoment());
 };
 
 Game.prototype.loadNextMoment = function() {
-  return this.loadMoment(this.currentMoment + 1);
+  return this.loadMoment(this.getCurrentMoment() + 1);
 };
 
 Game.prototype.loadScene = function(scene) {
-  var scene = this.getCurrentMoment().loadScene(scene);
+  var scene = this.getCurrentMoment(true).loadScene(scene);
   this.player.setZoom(scene.zoom);
 
   return scene;
 };
 
 Game.prototype.loadCurrentScene = function() {
-  var scene = this.getCurrentMoment().loadCurrentScene();
+  var scene = this.getCurrentMoment(true).loadCurrentScene();
   this.player.setZoom(scene.zoom);
 
   return scene;
 };
 
 Game.prototype.loadNextScene = function() {
-  var scene = this.getCurrentMoment().loadNextScene();
+  var scene = this.getCurrentMoment(true).loadNextScene();
   this.player.setZoom(scene.zoom);
 
   return scene;
 };
 
 Game.prototype.loadPreviousScene = function() {
-  var scene = this.getCurrentMoment().loadPreviousScene();
+  var scene = this.getCurrentMoment(true).loadPreviousScene();
   this.player.setZoom(scene.zoom);
 
   return scene;
 };
 
 Game.prototype.removeCurrentMoment = function() {
-  this.getCurrentMoment().remove();
+  this.getCurrentMoment(true).remove();
 };

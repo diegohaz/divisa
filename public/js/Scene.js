@@ -9,6 +9,10 @@ function Scene() {
 }
 
 Scene.prototype.draw = function() {
+  this.node.classList.remove('active');
+  window.getComputedStyle(this.node).opacity;
+  this.node.classList.add('active');
+
   this.inspirations.forEach(function(inspiration) {
     inspiration.appendTo(this.node);
   }.bind(this));

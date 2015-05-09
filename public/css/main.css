@@ -36,7 +36,7 @@
   height: 30vw;
   bottom: 0;
   left: 16px;
-  -moz-zoom: .5;
+  pointer-events: none;
 }
 
 #player.moving {

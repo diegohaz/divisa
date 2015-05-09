@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "smoothie": "flowyapps/smoothie#~0.1.0"
+    "smoothie": "flowyapps/smoothie#~0.1.0",
+    "PreloadJS": "createjs/preloadjs#~0.6.0"
   }
 }

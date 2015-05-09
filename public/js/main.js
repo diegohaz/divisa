@@ -9,6 +9,7 @@ var manifest = [
 ];
 
 preload.loadManifest(manifest);
+preload.setMaxConnections(5);
 
 preload.on('progress', function(evt) {
   document.getElementById('loader').textContent = (evt.progress * 100).toFixed(1) + '%';

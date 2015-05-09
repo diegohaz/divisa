@@ -114,9 +114,9 @@ Game.prototype.update = function() {
   var scene = moment.getCurrentScene(true);
 
   if (this.movingLeft || this.movingRight) {
-    if (moment.isFirstScene() && this.movingLeft && player.pos <= 0) {
+    if (moment.isFirstScene() && this.movingLeft && this.player.pos <= 0) {
       this.player.moveTo(0);
-    } else if (moment.isLastScene() && this.movingRight && player.getMaxPos() >= scene.getWidth()) {
+    } else if (moment.isLastScene() && this.movingRight && this.player.getMaxPos() >= scene.getWidth()) {
       this.player.moveToMax(scene.getWidth());
     } else {
       this.player.move(this.movingRight || -1);

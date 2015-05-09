@@ -16,6 +16,10 @@ body {
   -webkit-align-items: center;
 }
 
+body > img {
+  position: absolute;
+}
+
 #main {
   width: 100%;
 }

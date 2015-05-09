@@ -123,10 +123,10 @@ Game.prototype.update = function() {
     }
   }
 
-  if (player.pos > scene.getWidth() && !moment.isLastScene()) {
+  if (this.player.pos > scene.getWidth() && !moment.isLastScene()) {
     scene = this.loadNextScene();
     this.player.moveTo(0);
-  } else if (player.pos < 0 && !moment.isFirstScene()) {
+  } else if (this.player.pos < 0 && !moment.isFirstScene()) {
     scene = this.loadPreviousScene();
     this.player.moveToMax(scene.getWidth());
   }

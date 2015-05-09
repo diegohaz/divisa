@@ -17,7 +17,7 @@ body {
 }
 
 body > img {
-  position: absolute;
+  position: fixed;
 }
 
 #main {

@@ -37,6 +37,7 @@
   bottom: 0;
   left: 16px;
   pointer-events: none;
+  z-index: 999;
 }
 
 #player.moving {
@@ -72,7 +73,12 @@
 }
 
 .inspiration {
+  position: absolute;
   cursor: cell;
+}
+
+.scene > * {
+  background-size: 100% 100%;
 }
 
 .scene .label {
@@ -87,66 +93,40 @@
   visibility: visible;
 }
 
-#map {
-  background-image: url('/img/map.jpg');
-  width: 40vw;
-  height: 35vh;
+#scene1 .background {
+  background-image: url('/img/scene1bg.jpg');
+  width: 100%;
+  height: 100%;
 }
 
-#weapons {
-  background-image: url('/img/weapons.jpg');
-  width: 25vw;
-  height: 25vh;
+#map1 {
+  background-image: url('/img/map1.png');
+  width: 22.7vw;
+  height: 16.4vw;
+  left: 73.3vw;
+  top: 1.263vw;
 }
 
-#window {
-  background-image: url('/img/window.jpg');
-  width: 25vw;
-  height: 25vh;
+#table1 {
+  background-image: url('/img/table1.png');
+  width: 25.47vw;
+  height: 7.79vw;
+  left: 47.16vw;
+  top: 19.68vw;
 }
 
-#table {
-  background-image: url('/img/table.jpg');
-  width: 60vw;
-  height: 50vh;
+#weapons1 {
+  background-image: url('/img/weapons1.png');
+  width: 24.37vw;
+  height: 14.63vw;
+  left: 26.95vw;
+  top: 2.3vw;
 }
 
-#commander {
-  background-image: url('/img/commander.jpg');
-  width: 20vw;
-  height: 20vh;
+#window1 {
+  background-image: url('/img/window1.png');
+  width: 20.95vw;
+  height: 17.74vw;
+  left: 1.74vw;
+  top: 1.21vw;
 }
-
-/* POSITIONING */
-#map {
-  top: 10vh;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-#weapons {
-  top: 8vh;
-  right: 16px;
-}
-
-#window {
-  top: 8vh;
-  left: 16px;
-}
-
-#table {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-#commander {
-  bottom: 50vh;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-/* SOLDIER *

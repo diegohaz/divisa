@@ -8,11 +8,11 @@ var s = [];
 for (var i = 0; i < 2; i++) s[i] = [];
 
 // Moment 1 Scene 1
-s[0][0] = new Scene();
+s[0][0] = new Scene('scene1');
 s[0][0].zoom = 1;
 s[0][0].inspirations = [
-  new Inspiration('map', 'Mapa', new Reflection('Divisa... Isso tudo será nosso em breve.')),
-  new Inspiration('weapons', 'Armas', new Reflection('Às vezes, é necessário fazer uso de força para alcançar nossos objetivos…')),
+  new Inspiration('map1', 'Mapa', new Reflection('Divisa... Isso tudo será nosso em breve.')),
+  new Inspiration('weapons1', 'Armas', new Reflection('Às vezes, é necessário fazer uso de força para alcançar nossos objetivos…')),
   new Inspiration('window1', 'Janela', new Reflection('É sempre bom ter uma vista para o lado de fora...')),
   new Inspiration('table1', 'Mesa', new Reflection('O plano deve ser bem executado para alcançarmos êxito.')),
   new Inspiration('commander1', 'Comandante', new Reflection('Comandante', 'Este é o homem que nos levará a vitória.'))
@@ -21,7 +21,6 @@ s[0][0].inspirations = [
 s[0][1] = new Scene();
 s[0][1].zoom = .667;
 s[0][1].inspirations = [
-  new Inspiration('table', 'Crianças', new Reflection('Às vezes temos que remover as pedras do caminho...')),
   new Inspiration('children1', 'Crianças', new Reflection('Às vezes temos que remover as pedras do caminho...')),
   new Inspiration('rat1', 'Rato', new Reflection('Eu odeio ratos.')),
   new Inspiration('light1', 'Lâmpada', new Reflection('Me surpreende a energia chegar até aqui.'))

@@ -7,8 +7,9 @@ function Game() {
   this.currentMoment = 0;
   this.stage  = null;
   this.player = null;
+  this.movingRight = false;
+  this.movingLeft = false;
   this.moments = [];
-  this.moving = 0;
   this.controls = {
     left: [],
     right: []
@@ -110,25 +111,26 @@ Game.prototype.restart = function() {
 };
 
 Game.prototype.update = function() {
+  var player = this.player;
   var moment = this.getCurrentMoment(true);
   var scene = moment.getCurrentScene(true);
 
   if (this.movingLeft || this.movingRight) {
-    if (moment.isFirstScene() && this.movingLeft && this.player.pos <= 0) {
-      this.player.moveTo(0);
-    } else if (moment.isLastScene() && this.movingRight && this.player.getMaxPos() >= scene.getWidth()) {
-      this.player.moveToMax(scene.getWidth());
+    if (moment.isFirstScene() && this.movingLeft && player.getPos() <= 0) {
+      player.moveTo(0);
+    } else if (moment.isLastScene() && this.movingRight && player.getMaxPos() >= scene.getWidth()) {
+      player.moveToMax(scene.getWidth());
     } else {
-      this.player.move(this.movingRight || -1);
+      player.move(this.movingRight || -1);
     }
   }
 
-  if (this.player.pos > scene.getWidth() && !moment.isLastScene()) {
+  if (player.getPos() > scene.getWidth() && !moment.isLastScene()) {
     scene = this.loadNextScene();
-    this.player.moveTo(0);
-  } else if (this.player.pos < 0 && !moment.isFirstScene()) {
+    player.moveTo(1);
+  } else if (player.getPos() < 0 && !moment.isFirstScene()) {
     scene = this.loadPreviousScene();
-    this.player.moveToMax(scene.getWidth());
+    player.moveToMax(scene.getWidth());
   }
 
   setTimeout(this.update.bind(this), this.updateRate);
@@ -200,6 +202,7 @@ Game.prototype.loadNextScene = function() {
 Game.prototype.loadPreviousScene = function() {
   var scene = this.getCurrentMoment(true).loadPreviousScene();
   this.player.setZoom(scene.zoom);
+  this.player.move(-1);
 
   return scene;
 };

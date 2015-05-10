@@ -2,12 +2,11 @@ module.exports = new Player();
 
 function Player() {
   this.node = document.createElement('div');
-  this.pos = 0;
   this.zoom = 1;
   this.reflection = null;
 
   this.node.setAttribute('id', 'player');
-  this.pos = this.node.offsetLeft;
+  this.node.style.transformOrigin = '50% 100%';
 }
 
 Player.prototype.appendTo = function(node) {
@@ -15,29 +14,39 @@ Player.prototype.appendTo = function(node) {
 };
 
 Player.prototype.move = function(direction) {
-  var steps = this.node.offsetWidth/20;
+  var steps = this.getWidth()/20;
 
   if (direction == 1) {
     this.node.style.left = (this.node.offsetLeft + steps) + 'px';
+    this.node.style.transform = 'scale(' + this.zoom + ')';
   } else if (direction == -1) {
     this.node.style.left = (this.node.offsetLeft - steps) + 'px';
+    this.node.style.transform = 'scale(-' + this.zoom + ', ' + this.zoom + ')';
   }
-
-  this.pos = this.node.offsetLeft * this.zoom;
 };
 
 Player.prototype.moveTo = function(pos) {
-  this.node.style.left = (pos/this.zoom) + 'px';
-  this.pos = pos;
+  this.node.style.left = pos - this.getDiff() + 'px';
 };
 
 Player.prototype.moveToMax = function(maxPos) {
-  this.node.style.left = ((maxPos - this.node.offsetWidth * this.zoom)/this.zoom) + 'px';
-  this.pos = maxPos - this.node.offsetWidth * this.zoom;
+  this.node.style.left = maxPos - this.getDiff() - this.getWidth() + 'px';
+};
+
+Player.prototype.getPos = function() {
+  return this.node.offsetLeft + this.getDiff();
 };
 
 Player.prototype.getMaxPos = function() {
-  return this.pos + this.node.offsetWidth * this.zoom;
+  return this.getPos() + this.getWidth();
+};
+
+Player.prototype.getWidth = function() {
+  return this.node.offsetWidth * this.zoom;
+};
+
+Player.prototype.getDiff = function() {
+  return (this.node.offsetWidth - this.getWidth())/2;
 };
 
 Player.prototype.reflect = function(reflection) {
@@ -50,8 +59,8 @@ Player.prototype.reflect = function(reflection) {
 };
 
 Player.prototype.setZoom = function(zoom) {
-  this.node.style.zoom = zoom;
   this.zoom = zoom;
+  this.node.style.transform = 'scale(' + zoom + ')';
 
   if (this.reflection) {
     this.reflection.remove();

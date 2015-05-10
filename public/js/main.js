@@ -1,3 +1,4 @@
+var game = require('/js/Game');
 var preload = new createjs.LoadQueue(false, '/img/');
 var manifest = [
   {id: 'player', src: '/img/player.png'},
@@ -20,7 +21,6 @@ preload.on('complete', function() {
 
   var moments = require('/js/moments');
   var player = require('/js/Player');
-  var game = require('/js/Game');
 
   game.stage = document.getElementById('game');
   game.moments = moments;

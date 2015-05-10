@@ -45,11 +45,6 @@
   -moz-animation: playerMoving 1s steps(6) infinite;
 }
 
-#player.left {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-}
-
 .reflection {
   position: absolute;
   bottom: 100%;

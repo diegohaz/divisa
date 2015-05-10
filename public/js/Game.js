@@ -67,7 +67,7 @@ Game.prototype.start = function() {
 
         touchControl.classList.add('active');
 
-        touchControl.addEventListener('contextmenu', function(evt) {
+        game.stage.addEventListener('contextmenu', function(evt) {
           evt.preventDefault();
         });
 

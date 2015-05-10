@@ -77,10 +77,16 @@ Moment.prototype.appendTo = function(node, callback) {
     if (!this.loader.isComplete()) {
       this.loader.appendTo(node);
       this.loader.load();
-      this.loader.on('complete', function() {
+
+      this.loader.queue.on('complete', function() {
+        this.prepareScenes();
+      }.bind(this));
+
+      this.loader.onComplete = function() {
         node.appendChild(this.node);
         callback();
-      }.bind(this))
+      }.bind(this);
+
     } else {
       node.appendChild(this.node);
       callback();

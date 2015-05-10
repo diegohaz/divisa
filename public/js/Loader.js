@@ -3,6 +3,7 @@ module.exports = Loader;
 function Loader(files, basePath) {
   this.node = document.createElement('div');
   this.queue = new createjs.LoadQueue(true, basePath);
+  this.onComplete = function() {};
 
   var loadingBar = document.createElement('div');
   loadingBar.classList.add('loading-bar');
@@ -20,7 +21,11 @@ function Loader(files, basePath) {
   this.queue.on('complete', function() {
     this.node.classList.remove('loading');
     this.node.classList.add('complete');
-    this.remove();
+
+    setTimeout(function() {
+      this.remove();
+      this.onComplete();
+    }.bind(this), 1000);
   }.bind(this));
 }
 
@@ -28,10 +33,6 @@ Loader.prototype.load = function() {
   this.node.classList.add('loading');
 
   return this.queue.load();
-};
-
-Loader.prototype.on = function(type, listener, scope, once, data, useCapture) {
-  return this.queue.on(type, listener, scope, once, data, useCapture);
 };
 
 Loader.prototype.isComplete = function() {

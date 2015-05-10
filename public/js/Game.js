@@ -212,8 +212,6 @@ Game.prototype.loadMoment = function(moment, callback) {
   }
 
   momentObj.appendTo(this.stage, function() {
-    momentObj.prepareScenes();
-
     var scene = this.loadCurrentScene();
 
     this.player.setZoom(scene.zoom);

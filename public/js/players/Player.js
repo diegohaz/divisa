@@ -1,11 +1,14 @@
-module.exports = new Player();
+module.exports = Player;
 
-function Player() {
+function Player(id) {
   this.node = document.createElement('div');
   this.zoom = 1;
+  this.reflections = {};
+  this.letterReflections = [];
   this.reflection = null;
 
-  this.node.setAttribute('id', 'player');
+  this.node.setAttribute('id', id);
+  this.node.classList.add('player');
   this.node.style.transformOrigin = '50% 100%';
 }
 
@@ -49,13 +52,17 @@ Player.prototype.getDiff = function() {
   return (this.node.offsetWidth - this.getWidth())/2;
 };
 
-Player.prototype.reflect = function(reflection) {
+Player.prototype.reflect = function(id) {
   if (this.reflection) {
     this.reflection.remove();
   }
 
-  this.reflection = reflection;
-  reflection.appendTo(this.node);
+  if (id in this.reflections) {
+    this.reflection = this.reflections[id];
+    this.reflection.appendTo(this.node);
+  } else {
+    console.log('Player has not reflection for ' + id);
+  }
 };
 
 Player.prototype.setZoom = function(zoom) {

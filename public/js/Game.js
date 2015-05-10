@@ -2,8 +2,6 @@ module.exports = new Game();
 
 function Game() {
   this.updateRate = 10;
-  this.reflections = [];
-  this.letterReflections = 0;
   this.currentMoment = 0;
   this.stage  = null;
   this.player = null;
@@ -82,15 +80,11 @@ Game.prototype.start = function() {
   }.bind(this));
 
   window.addEventListener('inspect', function(evt) {
-    var Reflection = require('/js/Reflection');
     var detail = evt.detail;
+    var reflection = this.player.reflect(detail.id);
 
-    if (detail instanceof Reflection) {
-      if (detail.isLetterReflection()) {
-        this.addLetterReflection(detail);
-      }
-
-      this.player.reflect(detail)
+    if (reflection.isLetterReflection()) {
+      this.addLetterReflection(reflection);
     }
   }.bind(this));
 };
@@ -115,6 +109,12 @@ Game.prototype.update = function() {
   var moment = this.getCurrentMoment(true);
   var scene = moment.getCurrentScene(true);
 
+  setTimeout(this.update.bind(this), this.updateRate);
+
+  if (moment.loader && !moment.loader.isComplete()) {
+    return;
+  }
+
   if (this.movingLeft || this.movingRight) {
     if (moment.isFirstScene() && this.movingLeft && player.getPos() <= 0) {
       player.moveTo(0);
@@ -132,8 +132,6 @@ Game.prototype.update = function() {
     scene = this.loadPreviousScene();
     player.moveToMax(scene.getWidth());
   }
-
-  setTimeout(this.update.bind(this), this.updateRate);
 };
 
 Game.prototype.loadPlayer = function(player, stage) {
@@ -160,14 +158,12 @@ Game.prototype.loadMoment = function(moment) {
     var momentObj = this.moments[moment];
   }
 
-  momentObj.appendTo(this.stage);
+  momentObj.appendTo(this.stage, function() {
+    var scene = this.loadCurrentScene();
 
-  var scene = this.loadCurrentScene();
-
-  this.player.setZoom(scene.zoom);
-  this.player.moveTo(0);
-
-  return momentObj;
+    this.player.setZoom(scene.zoom);
+    this.player.moveTo(0);
+  }.bind(this));
 };
 
 Game.prototype.loadCurrentMoment = function() {

@@ -2,30 +2,21 @@ module.exports = Scene;
 
 function Scene(id) {
   this.node = document.createElement('div');
-  this.background = document.createElement('div');
-  this.foreground = document.createElement('div');
-  this.inspirations = [];
   this.zoom = 1
+  this.backgrounds = [];
+  this.inspirations = [];
+  this.foregrounds = [];
 
   this.node.classList.add('scene');
   this.node.setAttribute('id', id);
-
-  this.background.classList.add('background');
-  this.foreground.classList.add('foreground');
 }
 
 Scene.prototype.draw = function() {
-  this.node.classList.remove('active');
-  window.getComputedStyle(this.node).opacity;
-  this.node.classList.add('active');
+  var items = this.backgrounds.concat(this.inspirations).concat(this.foregrounds);
 
-  this.node.appendChild(this.background);
-
-  this.inspirations.forEach(function(inspiration) {
-    inspiration.appendTo(this.node);
+  items.forEach(function(item) {
+    item.appendTo(this.node);
   }.bind(this));
-
-  this.node.appendChild(this.foreground);
 };
 
 Scene.prototype.getWidth = function() {
@@ -38,6 +29,4 @@ Scene.prototype.appendTo = function(node) {
 
 Scene.prototype.remove = function() {
   this.node.remove();
-  this.background.remove();
-  this.foreground.remove();
 };

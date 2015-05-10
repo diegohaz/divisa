@@ -1,11 +1,13 @@
 module.exports = Moment;
 
-function Moment() {
+function Moment(id) {
   this.node = document.createElement('div');
+  this.loader = null;
   this.currentScene = 0;
   this.scenes = [];
 
   this.node.classList.add('moment');
+  this.node.setAttribute('id', id);
 }
 
 Moment.prototype.isFirstScene = function() {
@@ -70,12 +72,23 @@ Moment.prototype.removeCurrentScene = function() {
   this.getCurrentScene(true).remove();
 };
 
-Moment.prototype.appendTo = function(node) {
-  node.appendChild(this.node);
-
-  this.node.classList.remove('active');
-  window.getComputedStyle(this.node).opacity;
-  this.node.classList.add('active');
+Moment.prototype.appendTo = function(node, callback) {
+  if (this.loader) {
+    if (!this.loader.isComplete()) {
+      this.loader.appendTo(node);
+      this.loader.load();
+      this.loader.on('complete', function() {
+        node.appendChild(this.node);
+        callback();
+      }.bind(this))
+    } else {
+      node.appendChild(this.node);
+      callback();
+    }
+  } else {
+    node.appendChild(this.node);
+    callback();
+  }
 };
 
 Moment.prototype.remove = function() {

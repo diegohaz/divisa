@@ -26,7 +26,7 @@
   100% { background-position: 120% 0; }
 }
 
-#player {
+.player {
   position: absolute;
   background-repeat: no-repeat;
   background-image: url('/img/player.png');
@@ -40,7 +40,7 @@
   z-index: 999;
 }
 
-#player.moving {
+.player.moving {
   -webkit-animation: playerMoving 1s steps(6) infinite;
   -moz-animation: playerMoving 1s steps(6) infinite;
 }
@@ -62,13 +62,12 @@
   opacity: 1;
 }
 
-#player.left .reflection {
+.player.left .reflection {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
 
 .inspiration {
-  position: absolute;
   cursor: cell;
 }
 
@@ -86,42 +85,4 @@
 
 .scene .label.active {
   visibility: visible;
-}
-
-#scene1 .background {
-  background-image: url('/img/scene1bg.jpg');
-  width: 100%;
-  height: 100%;
-}
-
-#map1 {
-  background-image: url('/img/map1.png');
-  width: 22.7vw;
-  height: 16.4vw;
-  left: 73.3vw;
-  top: 1.263vw;
-}
-
-#table1 {
-  background-image: url('/img/table1.png');
-  width: 25.47vw;
-  height: 7.79vw;
-  left: 47.16vw;
-  top: 19.68vw;
-}
-
-#weapons1 {
-  background-image: url('/img/weapons1.png');
-  width: 24.37vw;
-  height: 14.63vw;
-  left: 26.95vw;
-  top: 2.3vw;
-}
-
-#window1 {
-  background-image: url('/img/window1.png');
-  width: 20.95vw;
-  height: 17.74vw;
-  left: 1.74vw;
-  top: 1.21vw;
 }

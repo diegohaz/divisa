@@ -1,13 +1,21 @@
+var Item = require('/js/Item');
+
 module.exports = Inspiration;
 
-function Inspiration(id, name, response) {
+Inspiration.prototype = new Item();
+Inspiration.prototype.constructor = Inspiration;
+
+function Inspiration(id, name, img, width, height, x, y) {
+  this.id = id;
+  this.name = name;
   this.node = document.createElement('div');
   this.label = document.createElement('div');
-  this.name = name;
-  this.response = response;
 
   this.node.classList.add('inspiration');
   this.node.setAttribute('id', id);
+
+  this.stylize(img, width, height, x, y);
+  this.node.style.pointerEvents = 'auto';
 
   this.label.appendChild(document.createTextNode(this.name));
   this.label.style.position = 'fixed';
@@ -15,7 +23,7 @@ function Inspiration(id, name, response) {
   this.label.classList.add('label');
 
   this.node.addEventListener('click', function() {
-    window.dispatchEvent(new CustomEvent('inspect', {detail: this.response}));
+    window.dispatchEvent(new CustomEvent('inspect', {detail: this}));
   }.bind(this));
 
   this.node.addEventListener('mousemove', function(evt) {
@@ -36,4 +44,5 @@ Inspiration.prototype.appendTo = function(node) {
 
 Inspiration.prototype.remove = function() {
   this.node.remove();
+  this.label.remove();
 };

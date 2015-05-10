@@ -1,115 +1,71 @@
-var Reflection = require('/js/Reflection');
-var Inspiration = require('/js/Inspiration');
-var Scene = require('/js/Scene');
 var Moment = require('/js/Moment');
+var Loader = require('/js/Loader');
+var Scene = require('/js/Scene');
+var Item = require('/js/Item');
+var Inspiration = require('/js/Inspiration');
 
-// Scenes
-var s = [];
-for (var i = 0; i < 2; i++) s[i] = [];
+var m = [];
+
+m[0] = new Moment('m0');
+m[0].loader = new Loader([
+  'map.png', 'weapons.png', 'window.png', 'table.png', 'box.png', 'holder.png',
+  's0.jpg'
+], '/img/m0/');
 
 // Moment 1 Scene 1
-s[0][0] = new Scene('scene1');
-s[0][0].zoom = 1;
-s[0][0].inspirations = [
-  new Inspiration('map1', 'Mapa', new Reflection('Divisa... Isso tudo será nosso em breve.')),
-  new Inspiration('weapons1', 'Armas', new Reflection('Às vezes, é necessário fazer uso de força para alcançar nossos objetivos…')),
-  new Inspiration('window1', 'Janela', new Reflection('É sempre bom ter uma vista para o lado de fora...')),
-  new Inspiration('table1', 'Mesa', new Reflection('O plano deve ser bem executado para alcançarmos êxito.')),
-  new Inspiration('commander1', 'Comandante', new Reflection('Comandante', 'Este é o homem que nos levará a vitória.'))
+m[0].scenes[0] = new Scene('m0s0');
+m[0].scenes[0].zoom = 1;
+m[0].scenes[0].backgrounds = [
+  new Item('/img/m0/s0.jpg', '100%', '100%')
 ];
+m[0].scenes[0].inspirations = [
+  // id, name, img, width, height, x, y
+  new Inspiration('map1', 'Mapa', '/img/m0/map.png', 431/19, 312/19, 1396/19, 36/19),
+  new Inspiration('weapons1', 'Armas', '/img/m0/weapons.png', 463/19, 278/19, 515/19, 54/19),
+  new Inspiration('window1', 'Janela', '/img/m0/window.png', 398/19, 337/19, 30/19, 30/19),
+  new Inspiration('table1', 'Mesa', '/img/m0/table.png', 484/19, 148/19, 894/19, 375/19)
+];
+m[0].scenes[0].foregrounds = [
+  new Item('/img/m0/box.png', 247/19, 373/19, 296/19, 300/19),
+  new Item('/img/m0/holder.png', 313/19, 190/19, 622/19, 54/19)
+];
+
 // Moment 1 Scene 2
-s[0][1] = new Scene();
-s[0][1].zoom = .667;
-s[0][1].inspirations = [
-  new Inspiration('children1', 'Crianças', new Reflection('Às vezes temos que remover as pedras do caminho...')),
-  new Inspiration('rat1', 'Rato', new Reflection('Eu odeio ratos.')),
-  new Inspiration('light1', 'Lâmpada', new Reflection('Me surpreende a energia chegar até aqui.'))
+m[0].scenes[1] = new Scene('m0s1');
+m[0].scenes[1].zoom = .667;
+m[0].scenes[1].inspirations = [
+  new Inspiration('children1', 'Crianças'),
+  new Inspiration('rat1', 'Rato'),
+  new Inspiration('light1', 'Lâmpada')
 ];
+
 // Moment 1 Scene 3
-s[0][2] = new Scene();
-s[0][2].zoom = .333;
-s[0][2].inspirations = [
-  new Inspiration('graffiti1', 'Pichação', new Reflection('Nós jamais depredaríamos nossa terra.')),
-  new Inspiration('family1', 'Família', new Reflection('Em breve eu e meu povo estaremos aqui.')),
-  new Inspiration('house1', 'Casa', new Reflection('Aqui vai ser minha casa de veraneio quando conquistarmos tudo.'))
+m[0].scenes[2] = new Scene('m0s2');
+m[0].scenes[2].zoom = .333;
+m[0].scenes[2].inspirations = [
+  new Inspiration('graffiti1', 'Pichação'),
+  new Inspiration('family1', 'Família'),
+  new Inspiration('house1', 'Casa')
 ];
+
 // Moment 1 Scene 4
-s[0][3] = new Scene();
-s[0][3].zoom = .667;
-s[0][3].inspirations = [
-  new Inspiration('tents1', 'Barracas', new Reflection('Esta é a minha casa, estes são meus vizinhos, não eles.')),
-  new Inspiration('soldiers1', 'Soldados', new Reflection('Homens corajosos, lutando pela nossa causa.')),
-  new Inspiration('car1', 'Jipe', new Reflection('Veloz e mortal...')),
-  new Inspiration('crates1', 'Caixotes', new Reflection('São nossos mantimentos.'))
+m[0].scenes[3] = new Scene('m0s3');
+m[0].scenes[3].zoom = .667;
+m[0].scenes[3].inspirations = [
+  new Inspiration('tents1', 'Barracas'),
+  new Inspiration('soldiers1', 'Soldados'),
+  new Inspiration('car1', 'Jipe'),
+  new Inspiration('crates1', 'Caixotes')
 ];
+
 // Moment 1 Scene 5
-s[0][4] = new Scene();
-s[0][4].zoom = 1;
-s[0][4].inspirations = [
-  new Inspiration('dogtag1', 'Dogtag', new Reflection('Eles são uns monstros de terem feito isso com você.')),
+m[0].scenes[4] = new Scene('m0s4');
+m[0].scenes[4].zoom = 1;
+m[0].scenes[4].inspirations = [
+  new Inspiration('dogtag1', 'Dogtag'),
   new Inspiration('bed1', 'Cama', ''),
-  new Inspiration('diary1', 'Diário', new Reflection('Quem pensa em escrever com tanta raiva?')),
-  new Inspiration('calendar1', 'Calendário', new Reflection('Hoje foi o primeiro dia do processo de conquista.'))
+  new Inspiration('diary1', 'Diário'),
+  new Inspiration('calendar1', 'Calendário')
 ];
 
-
-// Moment 2 Scene 1
-s[1][0] = new Scene();
-s[1][0].zoom = 1;
-s[1][0].inspirations = [
-  new Inspiration('map1', 'Mapa', new Reflection('Divisa... Isso tudo será nosso em breve.')),
-  new Inspiration('weapons1', 'Armas', new Reflection('Às vezes, é necessário fazer uso de força para alcançar nossos objetivos…')),
-  new Inspiration('window1', 'Janela', new Reflection('É sempre bom ter uma vista para o lado de fora...')),
-  new Inspiration('table1', 'Mesa', new Reflection('O plano deve ser bem executado para alcançarmos êxito.')),
-  new Inspiration('commander1', 'Comandante', new Reflection('Este é o homem que nos levará a vitória.'))
-];
-// Moment 2 Scene 2
-s[1][1] = new Scene();
-s[1][1].zoom = .667;
-s[1][1].inspirations = [
-  new Inspiration('children1', 'Crianças', new Reflection('Às vezes temos que remover as pedras do caminho...')),
-  new Inspiration('rat1', 'Rato', new Reflection('Eu odeio ratos.')),
-  new Inspiration('light1', 'Lâmpada', new Reflection('Me surpreende a energia chegar até aqui.'))
-];
-// Moment 2 Scene 3
-s[1][2] = new Scene();
-s[1][2].zoom = .333;
-s[1][2].inspirations = [
-  new Inspiration('graffiti1', 'Pichação', new Reflection('Nós jamais depredaríamos nossa terra.')),
-  new Inspiration('family1', 'Família', new Reflection('Em breve eu e meu povo estaremos aqui.')),
-  new Inspiration('house1', 'Casa', new Reflection('Aqui vai ser minha casa de veraneio quando conquistarmos tudo.'))
-];
-// Moment 2 Scene 4
-s[1][3] = new Scene();
-s[1][3].zoom = .667;
-s[1][3].inspirations = [
-  new Inspiration('tents1', 'Barracas', new Reflection('Esta é a minha casa, estes são meus vizinhos, não eles.')),
-  new Inspiration('soldiers1', 'Soldados', new Reflection('Homens corajosos, lutando pela nossa causa.')),
-  new Inspiration('car1', 'Jipe', new Reflection('Veloz e mortal...')),
-  new Inspiration('crates1', 'Caixotes', new Reflection('São nossos mantimentos.'))
-];
-// Moment 2 Scene 5
-s[1][4] = new Scene();
-s[1][4].zoom = 1;
-s[1][4].inspirations = [
-  new Inspiration('dogtag1', 'Dogtag', new Reflection('Eles são uns monstros de terem feito isso com você.')),
-  new Inspiration('bed1', 'Cama', ''),
-  new Inspiration('diary1', 'Diário', new Reflection('Quem pensa em escrever com tanta raiva?')),
-  new Inspiration('calendar1', 'Calendário', new Reflection('Hoje foi o primeiro dia do processo de conquista.'))
-];
-
-// Moments
-var moments = [];
-
-// Create 6 moments
-for (var i = 0; i < s.length; i++) {
-  var moment = new Moment();
-
-  for (var j = 0; j < s[i].length; j++) {
-    moment.scenes.push(s[i][j]);
-  }
-
-  moments.push(moment);
-}
-
-module.exports = moments;
+module.exports = m;

@@ -20,6 +20,7 @@ function Loader(files, basePath) {
   this.queue.on('complete', function() {
     this.node.classList.remove('loading');
     this.node.classList.add('complete');
+    this.remove();
   }.bind(this));
 }
 

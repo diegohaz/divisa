@@ -22,9 +22,18 @@ Player.prototype.move = function(direction) {
   if (direction == 1) {
     this.node.style.left = (this.node.offsetLeft + steps) + 'px';
     this.node.style.transform = 'scale(' + this.zoom + ')';
+
+    if (this.reflection) {
+      this.reflection.node.style.transform = 'scale(' + 1/this.zoom + ')';
+    }
+
   } else if (direction == -1) {
     this.node.style.left = (this.node.offsetLeft - steps) + 'px';
     this.node.style.transform = 'scale(-' + this.zoom + ', ' + this.zoom + ')';
+
+    if (this.reflection) {
+      this.reflection.node.style.transform = 'scale(-' + 1/this.zoom + ', ' + 1/this.zoom + ')';
+    }
   }
 };
 
@@ -60,9 +69,17 @@ Player.prototype.reflect = function(id) {
   if (id in this.reflections) {
     this.reflection = this.reflections[id];
     this.reflection.appendTo(this.node);
+
+    if (this.node.classList.contains('left')) {
+      this.reflection.node.style.transform = 'scale(-' + 1/this.zoom + ', ' + 1/this.zoom +')';
+    } else {
+      this.reflection.node.style.transform = 'scale(' + 1/this.zoom + ')';
+    }
   } else {
     console.log('Player has not reflection for ' + id);
   }
+
+  return this.reflection;
 };
 
 Player.prototype.setZoom = function(zoom) {

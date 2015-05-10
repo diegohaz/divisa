@@ -6,10 +6,11 @@ var Inspiration = require('/js/Inspiration');
 
 var m = [];
 
+// TODO: auto loader
 m[0] = new Moment('m0');
 m[0].loader = new Loader([
   'map.png', 'weapons.png', 'window.png', 'table.png', 'box.png', 'holder.png',
-  's0.jpg'
+  's0.jpg', '/img/player.png', 's1.jpg', 'light.png', 'prison.png', 'rat.png',
 ], '/img/m0/');
 
 // Moment 1 Scene 1
@@ -26,17 +27,23 @@ m[0].scenes[0].inspirations = [
   new Inspiration('table1', 'Mesa', '/img/m0/table.png', 484/19, 148/19, 894/19, 375/19)
 ];
 m[0].scenes[0].foregrounds = [
-  new Item('/img/m0/box.png', 247/19, 373/19, 296/19, 300/19),
+  // new Item('/img/m0/box.png', 247/19, 373/19, 296/19, 300/19),
   new Item('/img/m0/holder.png', 313/19, 190/19, 622/19, 54/19)
 ];
 
 // Moment 1 Scene 2
 m[0].scenes[1] = new Scene('m0s1');
 m[0].scenes[1].zoom = .667;
+m[0].scenes[1].backgrounds = [
+  new Item('/img/m0/s1.jpg', '100%', '100%')
+];
 m[0].scenes[1].inspirations = [
-  new Inspiration('children1', 'Crianças'),
-  new Inspiration('rat1', 'Rato'),
-  new Inspiration('light1', 'Lâmpada')
+  // id, name, img, width, height, x, y
+  new Inspiration('light1', 'Lâmpada', '/img/m0/light.png', 184/19, 193/19, 800/19, 0),
+];
+m[0].scenes[1].foregrounds = [
+  new Item('/img/m0/prison.png', '100%', 473/19, 0, 170/19),
+  new Inspiration('rat1', 'Rato', '/img/m0/rat.png', 96/19, 50/19, 1650/19, 630/19),
 ];
 
 // Moment 1 Scene 3

@@ -9,6 +9,7 @@ html, body {
 }
 
 body {
+  font-family: 'Slabo 27px', sans-serif;
   background-color: #000;
   display: flex;
   display: -webkit-flex;
@@ -34,17 +35,25 @@ header, footer {
   -webkit-flex-direction: column;
 }
 
+footer {
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
 #logo a {
   display: block;
-  background: url('/img/logo.png') 0 0 no-repeat;
-  background-size: 100% 100%;
-  width: 107px;
-  height: 50px;
+  background: url('/img/logo_white.png') 50% 0 no-repeat;
+  background-size: auto 100%;
+  width: 300px;
+  height: 30px;
   text-indent: -999em;
+  margin: 5px 0;
 }
 
 #restart {
+  font-family: 'Slabo 27px', sans-serif;
   text-transform: uppercase;
+  font-weight: 900;
   font-size: 18px;
   padding: 8px 16px;
   border: 0;
@@ -52,4 +61,47 @@ header, footer {
   background: #ff9900;
   color: #fff;
   cursor: pointer;
+  display: flex;
+  display: -webkit-flex;
+  align-self: center;
+}
+
+#credits {
+  color: rgba(255, 255, 255, .75);
+  display: flex;
+  display: -webkit-flex;
+  font-size: 14px;
+  letter-spacing: .08em;
+  line-height: 40px;
+}
+
+.heart {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 18px;
+  margin: 10px .25em;
+}
+
+.heart:before, .heart:after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 0;
+  width: 50%;
+  height: 90%;
+  background: red;
+  border-radius: 50% 50% 0 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+
+.heart:after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+  transform-origin :100% 100%;
 }

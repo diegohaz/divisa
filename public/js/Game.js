@@ -53,39 +53,40 @@ Game.prototype.clearReflections = function() {
 };
 
 Game.prototype.start = function() {
-  this.loadPlayer(this.player, this.stage);
-  this.loadCurrentMoment();
-  this.update();
+  this.loadCurrentMoment(function() {
+    this.loadPlayer(this.player, this.stage);
+    this.update();
 
-  window.addEventListener('keydown', function(evt) {
-    if (~this.controls.left.indexOf(evt.keyCode)) {
-      this.movingLeft = true;
-      this.player.node.classList.remove('right');
-      this.player.node.classList.add('moving', 'left');
-    } else if (~this.controls.right.indexOf(evt.keyCode)) {
-      this.movingRight = true;
-      this.player.node.classList.remove('left');
-      this.player.node.classList.add('moving', 'right');
-    }
-  }.bind(this));
+    window.addEventListener('keydown', function(evt) {
+      if (~this.controls.left.indexOf(evt.keyCode)) {
+        this.movingLeft = true;
+        this.player.node.classList.remove('right');
+        this.player.node.classList.add('moving', 'left');
+      } else if (~this.controls.right.indexOf(evt.keyCode)) {
+        this.movingRight = true;
+        this.player.node.classList.remove('left');
+        this.player.node.classList.add('moving', 'right');
+      }
+    }.bind(this));
 
-  window.addEventListener('keyup', function(evt) {
-    if (~this.controls.left.indexOf(evt.keyCode)) {
-      this.movingLeft = false;
-      this.movingRight || this.player.node.classList.remove('moving');
-    } else if (~this.controls.right.indexOf(evt.keyCode)) {
-      this.movingRight = false;
-      this.movingLeft || this.player.node.classList.remove('moving');
-    }
-  }.bind(this));
+    window.addEventListener('keyup', function(evt) {
+      if (~this.controls.left.indexOf(evt.keyCode)) {
+        this.movingLeft = false;
+        this.movingRight || this.player.node.classList.remove('moving');
+      } else if (~this.controls.right.indexOf(evt.keyCode)) {
+        this.movingRight = false;
+        this.movingLeft || this.player.node.classList.remove('moving');
+      }
+    }.bind(this));
 
-  window.addEventListener('inspect', function(evt) {
-    var detail = evt.detail;
-    var reflection = this.player.reflect(detail.id);
+    window.addEventListener('inspect', function(evt) {
+      var detail = evt.detail;
+      var reflection = this.player.reflect(detail.id);
 
-    if (reflection.isLetterReflection()) {
-      this.addLetterReflection(reflection);
-    }
+      if (reflection.isLetterReflection()) {
+        this.addLetterReflection(reflection);
+      }
+    }.bind(this));
   }.bind(this));
 };
 
@@ -148,7 +149,7 @@ Game.prototype.loadPlayer = function(player, stage) {
   return player;
 };
 
-Game.prototype.loadMoment = function(moment) {
+Game.prototype.loadMoment = function(moment, callback) {
   if (moment == this.currentMoment) {
     var momentObj = this.getCurrentMoment(true);
   } else {
@@ -159,19 +160,23 @@ Game.prototype.loadMoment = function(moment) {
   }
 
   momentObj.appendTo(this.stage, function() {
+    momentObj.prepareScenes();
+
     var scene = this.loadCurrentScene();
 
     this.player.setZoom(scene.zoom);
     this.player.moveTo(0);
+
+    callback(momentObj);
   }.bind(this));
 };
 
-Game.prototype.loadCurrentMoment = function() {
-  return this.loadMoment(this.getCurrentMoment());
+Game.prototype.loadCurrentMoment = function(callback) {
+  return this.loadMoment(this.getCurrentMoment(), callback);
 };
 
-Game.prototype.loadNextMoment = function() {
-  return this.loadMoment(this.getCurrentMoment() + 1);
+Game.prototype.loadNextMoment = function(callback) {
+  return this.loadMoment(this.getCurrentMoment() + 1, callback);
 };
 
 Game.prototype.loadScene = function(scene) {

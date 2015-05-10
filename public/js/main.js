@@ -11,7 +11,3 @@ game.controls = {
 };
 
 game.start();
-
-document.getElementById('restart').addEventListener('click', function() {
-  game.restart();
-});

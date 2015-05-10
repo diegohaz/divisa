@@ -7,8 +7,27 @@
   position: relative;
   width: 100%;
   height: 40vw;
-  background-color: #aaa;
+  background-color: #fff;
   cursor: default;
+}
+
+.loader {
+  position: absolute;
+  background: url('/img/logo_black.png') top center no-repeat;
+  background-size: 100% auto;
+  width: 30vw;
+  height: 16vw;
+  left: 35vw;
+  top: calc(50% - 8vw);
+}
+
+.loading-bar {
+  position: absolute;
+  bottom: 0;
+  background-color: #000;
+  height: .5vw;
+  width: 0;
+  transition: width 300ms;
 }
 
 .moment, .scene {
@@ -30,7 +49,7 @@
   position: absolute;
   background-repeat: no-repeat;
   background-image: url('/img/player.png');
-  background-size: 600% 302%;
+  background-size: 600% 303%;
   background-position: 0 100%;
   width: 15vw;
   height: 30vw;
@@ -62,11 +81,6 @@
   opacity: 1;
 }
 
-.player.left .reflection {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-}
-
 .inspiration {
   cursor: cell;
 }
@@ -81,6 +95,7 @@
   padding: .5vw;
   border-radius: .5vw;
   visibility: hidden;
+  z-index: 1000;
 }
 
 .scene .label.active {

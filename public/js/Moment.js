@@ -2,6 +2,7 @@ module.exports = Moment;
 
 function Moment(id) {
   this.node = document.createElement('div');
+  this.preparator = document.createElement('div');
   this.loader = null;
   this.currentScene = 0;
   this.scenes = [];
@@ -51,7 +52,6 @@ Moment.prototype.loadScene = function(scene) {
   }
 
   sceneObj.appendTo(this.node);
-  sceneObj.draw();
 
   return sceneObj;
 };
@@ -93,4 +93,17 @@ Moment.prototype.appendTo = function(node, callback) {
 
 Moment.prototype.remove = function() {
   this.node.remove();
+};
+
+Moment.prototype.prepareScenes = function() {
+  this.preparator.style.position = 'fixed';
+  this.preparator.style.visibility = 'hidden';
+  this.preparator.style.pointerEvents = 'none';
+  document.body.appendChild(this.preparator);
+
+  for (var i = 0; i < this.scenes.length; i++) {
+    var scene = this.scenes[i];
+    scene.appendTo(this.preparator);
+    scene.draw();
+  }
 };

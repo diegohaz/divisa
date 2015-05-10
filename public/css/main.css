@@ -11,6 +11,27 @@
   cursor: default;
 }
 
+.touch-control {
+  display: none;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .5);
+  bottom: -32px;
+  right: 8px;
+  z-index: 1001;
+}
+
+.touch-control.left {
+  left: 8px;
+  right: auto;
+}
+
+.touch-control.active {
+  display: block;
+}
+
 .loader {
   position: absolute;
   background: url('/img/logo_black.png') top center no-repeat;

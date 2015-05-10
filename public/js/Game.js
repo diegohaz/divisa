@@ -57,12 +57,50 @@ Game.prototype.start = function() {
     this.loadPlayer(this.player, this.stage);
     this.update();
 
+    // TODO: Organize into different functions
+    window.addEventListener('touchstart', function(evt) {
+      var touchControls = document.querySelectorAll('.touch-control');
+
+      for (var i = 0; i < touchControls.length; i++) {
+        var touchControl = touchControls[i];
+        var keyCode = 0;
+
+        touchControl.classList.add('active');
+
+        touchControl.addEventListener('contextmenu', function(evt) {
+          evt.preventDefault();
+        });
+
+        touchControl.addEventListener('touchstart', function() {
+          if (this.classList.contains('left')) {
+            keyCode = game.controls.left[0];
+          } else {
+            keyCode = game.controls.right[0];
+          }
+
+          window.dispatchEvent(new CustomEvent('keydown', {detail: keyCode}));
+        });
+
+        touchControl.addEventListener('touchend', function() {
+          if (this.classList.contains('left')) {
+            keyCode = game.controls.left[0];
+          } else {
+            keyCode = game.controls.right[0];
+          }
+
+          window.dispatchEvent(new CustomEvent('keyup', {detail: keyCode}));
+        });
+      }
+    });
+
     window.addEventListener('keydown', function(evt) {
-      if (~this.controls.left.indexOf(evt.keyCode)) {
+      var key = evt.detail ? evt.detail : evt.keyCode;
+
+      if (~this.controls.left.indexOf(key)) {
         this.movingLeft = true;
         this.player.node.classList.remove('right');
         this.player.node.classList.add('moving', 'left');
-      } else if (~this.controls.right.indexOf(evt.keyCode)) {
+      } else if (~this.controls.right.indexOf(key)) {
         this.movingRight = true;
         this.player.node.classList.remove('left');
         this.player.node.classList.add('moving', 'right');
@@ -70,10 +108,12 @@ Game.prototype.start = function() {
     }.bind(this));
 
     window.addEventListener('keyup', function(evt) {
-      if (~this.controls.left.indexOf(evt.keyCode)) {
+      var key = evt.detail ? evt.detail : evt.keyCode;
+
+      if (~this.controls.left.indexOf(key)) {
         this.movingLeft = false;
         this.movingRight || this.player.node.classList.remove('moving');
-      } else if (~this.controls.right.indexOf(evt.keyCode)) {
+      } else if (~this.controls.right.indexOf(key)) {
         this.movingRight = false;
         this.movingLeft || this.player.node.classList.remove('moving');
       }

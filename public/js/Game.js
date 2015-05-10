@@ -67,12 +67,21 @@ Game.prototype.start = function() {
 
         touchControl.classList.add('active');
 
-        window.addEventListener('contextmenu', function(evt) {
-          evt.preventDefault();
-          evt.stopPropagation();
-        });
+        function absorbEvent(event) {
+          e = event || window.event;
+          e.preventDefault && e.preventDefault();
+          e.stopPropagation && e.stopPropagation();
+          e.cancelBubble = true;
+          e.returnValue = false;
+          return false;
+        }
 
-        touchControl.addEventListener('touchstart', function() {
+        touchControl.ontouchstart = absorbEvent;
+        touchControl.ontouchmove = absorbEvent;
+        touchControl.ontouchend = absorbEvent;
+        touchControl.ontouchcancel = absorbEvent;
+
+        touchControl.addEventListener('touchstart', function(e) {
           if (this.classList.contains('left')) {
             keyCode = game.controls.left[0];
           } else {
@@ -80,6 +89,8 @@ Game.prototype.start = function() {
           }
 
           window.dispatchEvent(new CustomEvent('keydown', {detail: keyCode}));
+
+          return absorbEvent(e);
         });
 
         touchControl.addEventListener('touchend', function() {

@@ -9,7 +9,6 @@
   height: 40vw;
   background-color: #fff;
   cursor: default;
-  overflow: hidden;
 }
 
 #game::after {

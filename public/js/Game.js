@@ -36,22 +36,6 @@ Game.prototype.setCurrentMoment = function(value) {
   this.currentMoment = value;
 };
 
-Game.prototype.getLetterReflections = function() {
-  return this.letterReflections;
-};
-
-Game.prototype.addLetterReflection = function(reflection) {
-  if (!~this.reflections.indexOf(reflection) && this.getLetterReflections() <= this.getCurrentMoment()) {
-    this.reflections.push(reflection);
-    this.letterReflections++;
-  }
-};
-
-Game.prototype.clearReflections = function() {
-  this.reflections = [];
-  this.letterReflections = 0;
-};
-
 Game.prototype.start = function() {
   this.loadCurrentMoment(function() {
     this.loadPlayer(this.player, this.stage);
@@ -133,10 +117,19 @@ Game.prototype.start = function() {
 
     window.addEventListener('inspect', function(evt) {
       var detail = evt.detail;
-      var reflection = this.player.reflect(detail.id);
 
-      if (reflection.isLetterReflection()) {
-        this.addLetterReflection(reflection);
+      if (detail.name == 'Cama') {
+        if (window.confirm('Dormir?')) {
+          this.stage.classList.add('sleeping');
+
+          setTimeout(function() {
+            this.loadNextMoment(function() {
+              this.stage.classList.remove('sleeping');
+            }.bind(this));
+          }.bind(this), 2000);
+        }
+      } else {
+        var reflection = this.player.reflect(detail.id);
       }
     }.bind(this));
   }.bind(this));
@@ -205,6 +198,10 @@ Game.prototype.loadMoment = function(moment, callback) {
   if (moment == this.currentMoment) {
     var momentObj = this.getCurrentMoment(true);
   } else {
+    if (!(moment in this.moments)) {
+      return;
+    }
+
     this.removeCurrentMoment();
     this.setCurrentMoment(moment);
 
@@ -217,7 +214,9 @@ Game.prototype.loadMoment = function(moment, callback) {
     this.player.setZoom(scene.zoom);
     this.player.moveTo(0);
 
-    callback(momentObj);
+    if (callback) {
+      callback(momentObj);
+    }
   }.bind(this));
 };
 

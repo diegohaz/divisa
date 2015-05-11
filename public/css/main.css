@@ -9,6 +9,29 @@
   height: 40vw;
   background-color: #fff;
   cursor: default;
+  overflow: hidden;
+}
+
+#game::after {
+  content: '';
+  color: #fff;
+  font-size: 5vw;
+  text-align: center;
+  line-height: 40vw;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  z-index: 1010;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s;
+}
+
+#game.sleeping::after {
+  opacity: 1;
 }
 
 .touch-control {

@@ -4,7 +4,6 @@ function Player(id) {
   this.node = document.createElement('div');
   this.zoom = 1;
   this.reflections = {};
-  this.letterReflections = [];
   this.reflection = null;
 
   this.node.setAttribute('id', id);

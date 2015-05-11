@@ -8,6 +8,7 @@ function Player(id) {
 
   this.node.setAttribute('id', id);
   this.node.classList.add('player');
+  this.node.style.webkitTransformOrigin = '50% 100%';
   this.node.style.transformOrigin = '50% 100%';
 }
 
@@ -20,17 +21,21 @@ Player.prototype.move = function(direction) {
 
   if (direction == 1) {
     this.node.style.left = (this.node.offsetLeft + steps) + 'px';
+    this.node.style.webkitTransform = 'scale(' + this.zoom + ')';
     this.node.style.transform = 'scale(' + this.zoom + ')';
 
     if (this.reflection) {
+      this.reflection.node.style.webkitTransform = 'scale(' + 1/this.zoom + ')';
       this.reflection.node.style.transform = 'scale(' + 1/this.zoom + ')';
     }
 
   } else if (direction == -1) {
     this.node.style.left = (this.node.offsetLeft - steps) + 'px';
+    this.node.style.webkitTransform = 'scale(-' + this.zoom + ', ' + this.zoom + ')';
     this.node.style.transform = 'scale(-' + this.zoom + ', ' + this.zoom + ')';
 
     if (this.reflection) {
+      this.reflection.node.style.webkitTransform = 'scale(-' + 1/this.zoom + ', ' + 1/this.zoom + ')';
       this.reflection.node.style.transform = 'scale(-' + 1/this.zoom + ', ' + 1/this.zoom + ')';
     }
   }
@@ -70,8 +75,10 @@ Player.prototype.reflect = function(id) {
     this.reflection.appendTo(this.node);
 
     if (this.node.classList.contains('left')) {
+      this.reflection.node.style.webkitTransform = 'scale(-' + 1/this.zoom + ', ' + 1/this.zoom +')';
       this.reflection.node.style.transform = 'scale(-' + 1/this.zoom + ', ' + 1/this.zoom +')';
     } else {
+      this.reflection.node.style.webkitTransform = 'scale(' + 1/this.zoom + ')';
       this.reflection.node.style.transform = 'scale(' + 1/this.zoom + ')';
     }
   } else {
@@ -83,6 +90,7 @@ Player.prototype.reflect = function(id) {
 
 Player.prototype.setZoom = function(zoom) {
   this.zoom = zoom;
+  this.node.style.webkitTransform = 'scale(' + zoom + ')';
   this.node.style.transform = 'scale(' + zoom + ')';
 
   if (this.reflection) {

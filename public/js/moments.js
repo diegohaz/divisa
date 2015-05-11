@@ -11,7 +11,7 @@ m[0] = new Moment('m0');
 m[0].loader = new Loader([
   'map.png', 'weapons.png', 'window.png', 'table.png', 'box.png', 'holder.png',
   's0.jpg', '/img/player.png', 's1.jpg', 'light.png', 'prison.png', 'rat.png',
-  's2.svg'
+  's2.svg', 's3.svg'
 ], '/img/m0/');
 
 // Moment 1 Scene 1
@@ -131,6 +131,9 @@ m[1].scenes[2].inspirations = [
 // Moment 1 Scene 4
 m[1].scenes[3] = new Scene('m1s3');
 m[1].scenes[3].zoom = .667;
+m[1].scenes[3].backgrounds = [
+  new Item('/img/m0/s3.svg', '100%', '100%')
+];
 m[1].scenes[3].inspirations = [
   new Inspiration('tents1', 'Barracas'),
   new Inspiration('soldiers1', 'Soldados'),

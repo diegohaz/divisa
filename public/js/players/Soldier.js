@@ -14,7 +14,7 @@ var reflections = {
   light1: 'Me surpreende a energia chegar até aqui.',
 
   // Moment 1 Scene 3
-  graffiti1: 'Nós jamais depredaríamos nossa terra.',
+  wall1: 'Nós jamais depredaríamos nossa terra.',
   family1: 'Em breve eu e meu povo estaremos aqui.',
   house1: 'Aqui vai ser minha casa de veraneio quando conquistarmos tudo.',
 

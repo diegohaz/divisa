@@ -27,7 +27,7 @@ function Loader(files, basePath) {
       this.remove();
       this.complete = true;
       this.onComplete();
-    }.bind(this), 1000);
+    }.bind(this), 500);
   }.bind(this));
 }
 

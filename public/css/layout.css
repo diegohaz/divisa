@@ -26,6 +26,7 @@ body > img {
 }
 
 header, footer {
+  color: #fff;
   padding: 10px;
   display: flex;
   display: -webkit-flex;
@@ -33,6 +34,12 @@ header, footer {
   -webkit-align-items: center;
   flex-direction: column;
   -webkit-flex-direction: column;
+}
+
+#controls {
+  position: absolute;
+  top: 35px;
+  left: 20px;
 }
 
 footer {

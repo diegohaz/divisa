@@ -12,7 +12,7 @@
 }
 
 #game::after {
-  content: '';
+  content: 'Divisa... Isso tudo será nosso.';
   color: #fff;
   font-size: 5vw;
   text-align: center;

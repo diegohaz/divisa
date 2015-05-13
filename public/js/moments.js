@@ -12,7 +12,7 @@ m[0].loader = new Loader([
   'map.png', 'weapons.png', 'window.png', 'table.png', 'box.png', 'holder.png',
   's0.jpg', '/img/player.png', 's1.jpg', 'light.png', 'prison.png', 'rat.png',
   's2.jpg', 'wall.png', 'family.png', 'house.png', 's3.jpg', 'tents.png',
-  'soldiers.png', 'creates.png', 'car.png'
+  'soldiers.png', 'creates.png', 'car.png', 'children1.png'
 ], '/img/m0/');
 
 // Moment 1 Scene 1
@@ -41,6 +41,7 @@ m[0].scenes[1].backgrounds = [
 ];
 m[0].scenes[1].inspirations = [
   // id, name, img, width, height, x, y
+  new Inspiration('children1', 'Crianças', '/img/m0/children1.png', 1112/19, 284/19, 280/19, 300/19),
   new Inspiration('light1', 'Lâmpada', '/img/m0/light.png', 184/19, 193/19, 875/19, 0),
 ];
 m[0].scenes[1].foregrounds = [

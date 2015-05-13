@@ -4,7 +4,7 @@ function Moment(id) {
   this.node = document.createElement('div');
   this.preparator = document.createElement('div');
   this.loader = null;
-  this.currentScene = 2;
+  this.currentScene = 3;
   this.scenes = [];
 
   this.node.classList.add('moment');

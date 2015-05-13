@@ -11,7 +11,8 @@ m[0] = new Moment('m0');
 m[0].loader = new Loader([
   'map.png', 'weapons.png', 'window.png', 'table.png', 'box.png', 'holder.png',
   's0.jpg', '/img/player.png', 's1.jpg', 'light.png', 'prison.png', 'rat.png',
-  's2.jpg', 'wall.png', 'family.png', 'house.png'
+  's2.jpg', 'wall.png', 'family.png', 'house.png', 's3.jpg', 'tents.png',
+  'soldiers.png', 'creates.png', 'car.png'
 ], '/img/m0/');
 
 // Moment 1 Scene 1
@@ -63,13 +64,16 @@ m[0].scenes[2].inspirations = [
 // Moment 1 Scene 4
 m[0].scenes[3] = new Scene('m0s3');
 m[0].scenes[3].zoom = .667;
-m[0].scenes[3].inspirations = [
-  new Inspiration('tents1', 'Barracas'),
-  new Inspiration('soldiers1', 'Soldados'),
-  new Inspiration('car1', 'Jipe'),
-  new Inspiration('crates1', 'Caixotes')
+m[0].scenes[3].backgrounds = [
+  new Item('/img/m0/s3.jpg', '100%', '100%')
 ];
-
+m[0].scenes[3].inspirations = [
+  // id, name, img, width, height, x, y
+  new Inspiration('tents1', 'Tendas', '/img/m0/tents.png', 855/19, 274/19, 1020/19, 200/19),
+  new Inspiration('car1', 'Jipe', '/img/m0/car.png', 603/19, 328/19, 150/19, 260/19),
+  new Inspiration('crates1', 'Caixotes', '/img/m0/crates.png', 262/19, 241/19, 760/19, 210/19),
+  new Inspiration('soldiers1', 'Soldados', '/img/m0/soldiers.png', 477/19, 359/19, 1080/19, 350/19),
+];
 // Moment 1 Scene 5
 m[0].scenes[4] = new Scene('m0s4');
 m[0].scenes[4].zoom = 1;

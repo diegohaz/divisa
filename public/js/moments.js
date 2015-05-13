@@ -77,11 +77,14 @@ m[0].scenes[3].inspirations = [
 // Moment 1 Scene 5
 m[0].scenes[4] = new Scene('m0s4');
 m[0].scenes[4].zoom = 1;
+m[0].scenes[4].backgrounds = [
+  new Item('/img/m0/s4.jpg', '100%', '100%')
+];
 m[0].scenes[4].inspirations = [
-  new Inspiration('dogtag1', 'Dogtag'),
-  new Inspiration('bed1', 'Cama', '/img/m0/bed.png', 411/19, 119/19, 1200/19, 600/19),
-  new Inspiration('diary1', 'Diário'),
-  new Inspiration('calendar1', 'Calendário')
+  // id, name, img, width, height, x, y
+  new Inspiration('dogtag1', 'Dog-tag', '/img/m0/dogtag1.png', 78/19, 42/19, 930/19, 500/19),
+  new Inspiration('diary1', 'Diário', '/img/m0/diary1.png', 130/19, 76/19, 1100/19, 630/19),
+  new Inspiration('bed1', 'Cama', '/img/m0/bed.png', 602/19, 160/19, 1280/19, 600/19),
 ];
 
 // TODO: auto loader

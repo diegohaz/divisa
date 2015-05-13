@@ -40,7 +40,7 @@ footer {
   -webkit-flex-direction: column;
 }
 
-#logo a {
+#logo {
   display: block;
   background: url('/img/logo_white.png') 50% 0 no-repeat;
   background-size: auto 100%;

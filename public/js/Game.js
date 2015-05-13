@@ -142,7 +142,6 @@ Game.prototype.restart = function() {
   moment.setCurrentScene(0);
   moment.remove();
 
-  this.clearReflections();
   this.setCurrentMoment(0);
   this.loadCurrentMoment();
 

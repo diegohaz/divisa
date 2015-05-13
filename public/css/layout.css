@@ -68,9 +68,7 @@ footer {
   background: #ff9900;
   color: #fff;
   cursor: pointer;
-  display: flex;
-  display: -webkit-flex;
-  align-self: center;
+  margin-left: 40px;
 }
 
 #credits {

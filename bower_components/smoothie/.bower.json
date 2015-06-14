@@ -1,0 +1,14 @@
+{
+  "name": "smoothie",
+  "homepage": "https://github.com/flowyapps/smoothie",
+  "version": "0.1.0",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "b66fec9b8e0daa291ad90014813b818ea3024f86"
+  },
+  "_source": "git://github.com/flowyapps/smoothie.git",
+  "_target": "~0.1.0",
+  "_originalSource": "flowyapps/smoothie"
+}

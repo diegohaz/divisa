@@ -1,0 +1,88 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="divisa-player.html">
+
+<dom-module id="divisa-game">
+
+  <style>
+    @import '//fonts.googleapis.com/css?family=Slabo+27px';
+
+    :host {
+      font-family: 'Slabo 27px', sans-serif;
+      display: block;
+      overflow: hidden;
+      position: relative;
+      font-size: 1.6vw;
+      width: 100%;
+      height: 40vw;
+      background-color: #fff;
+      cursor: default;
+    }
+  </style>
+
+  <template>
+    <divisa-player id="player" scale=".4" src="../img/player.png"></divisa-player>
+  </template>
+
+</dom-module>
+
+<script>
+Polymer({
+  is: 'divisa-game',
+
+  keys: {
+    left: [37, 65, 97],
+    right: [39, 68, 100]
+  },
+
+  attributes: {
+    framerate: { value: 60 }
+  },
+
+  ready: function() {
+    this.update();
+
+    window.addEventListener('keydown', this._keydown.bind(this));
+    window.addEventListener('keyup', this._keyup.bind(this));
+  },
+
+  update: function() {
+    setTimeout(this.update.bind(this), 1000/this.framerate);
+
+    var player = this.$.player;
+
+    if (player.moving) {
+      var canMoveRight = player.direction === 1 && player.maxPosition < this.offsetWidth;
+      var canMoveLeft = player.direction === -1 && player.position > -player.getWidthDiff();
+
+      if (canMoveRight || canMoveLeft) {
+        player.move();
+      }
+    }
+  },
+
+  _keydown: function(e) {
+    var key = e.keyCode;
+    var player = this.$.player;
+
+    if (~this.keys.left.indexOf(key)) {
+      player.direction = -1;
+      player.moving = true;
+    } else if (~this.keys.right.indexOf(key)) {
+      player.direction = 1;
+      player.moving = true;
+    }
+  },
+
+  _keyup: function(e) {
+    var key = e.keyCode;
+    var player = this.$.player;
+    var left = ~this.keys.left.indexOf(key) && player.direction === -1;
+    var right = ~this.keys.right.indexOf(key) && player.direction === 1;
+
+    if (left || right) {
+      player.moving = false;
+    }
+  }
+});
+</script>

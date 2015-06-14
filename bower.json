@@ -1,0 +1,22 @@
+{
+  "name": "Divisa",
+  "version": "0.3",
+  "homepage": "http://divisagame.com",
+  "authors": [
+    "Diego Haz <hazdiego@gmail.com>"
+  ],
+  "description": "A game about war and peace.",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "smoothie": "flowyapps/smoothie#~0.1.0",
+    "PreloadJS": "createjs/preloadjs#~0.6.0"
+  }
+}

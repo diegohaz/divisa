@@ -9,6 +9,7 @@
   height: 40vw;
   background-color: #fff;
   cursor: default;
+  overflow: hidden;
 }
 
 #transition {
@@ -32,7 +33,7 @@
   -webkit-align-items: center;
 }
 
-#game.sleeping + #transition {
+#game.sleeping > #transition {
   opacity: 1;
   pointer-events: auto;
 }
@@ -80,6 +81,8 @@
 .moment, .scene {
   width: 100%;
   height: 100%;
+  background-color: #000;
+  overflow: hidden;
 }
 
 @-webkit-keyframes playerMoving {

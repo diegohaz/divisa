@@ -108,6 +108,7 @@ Moment.prototype.prepareScenes = function() {
   document.body.appendChild(this.preparator);
 
   for (var i = 0; i < this.scenes.length; i++) {
+    console.log(i);
     var scene = this.scenes[i];
     scene.appendTo(this.preparator);
     scene.draw();

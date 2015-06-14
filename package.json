@@ -18,9 +18,7 @@
   },
   "homepage": "http://divisagame.com",
   "dependencies": {
-    "express": "^4.12.3"
-  },
-  "devDependencies": {
+    "express": "^4.12.3",
     "bower": "^1.4.1"
   }
 }

@@ -14,10 +14,8 @@
 
 #transition {
   color: #fff;
-  font-size: 3vw;
-  text-align: center;
-  line-height: 40vw;
   position: absolute;
+  text-align: center;
   width: 100%;
   height: 100%;
   top: 0;
@@ -26,6 +24,45 @@
   z-index: 1010;
   opacity: 0;
   pointer-events: none;
+}
+
+#inspiration {
+  font-size: 3vw;
+  line-height: 40vw;
+}
+
+#transition .continue {
+  position: absolute;
+  font-size: 1.5vw;
+  opacity: .5;
+  line-height: 40vw;
+  top: 3vw;
+  width: 100%;
+}
+
+.keys {
+  position: absolute;
+  font-size: 1.5vw;
+  line-height: 2vw;
+  bottom: 1vw;
+  width: 100%;
+}
+
+.keys > * {
+  display: inline-block;
+  padding-left: 2.4vw;
+  margin: 5vw;
+}
+
+.keys .click {
+  background: url(/img/mouse.png) 0 0 no-repeat;
+  background-size: 2vw auto;
+}
+
+.keys .move {
+  background: url(/img/keys.png) 0 0 no-repeat;
+  background-size: auto 1.9vw;
+  padding-left: 5vw;
 }
 
 #game.sleeping > #transition {

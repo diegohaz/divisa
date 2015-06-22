@@ -37,6 +37,19 @@ Game.prototype.setCurrentMoment = function(value) {
 };
 
 Game.prototype.start = function() {
+  window.addEventListener('keydown', function() {
+      this.stage.classList.remove('sleeping');
+      document.querySelector('.keys').style.opacity = 0;
+  }.bind(this));
+  window.addEventListener('touchstart', function() {
+      this.stage.classList.remove('sleeping');
+      document.querySelector('.keys').style.opacity = 0;
+  }.bind(this));
+  window.addEventListener('click', function() {
+      this.stage.classList.remove('sleeping');
+      document.querySelector('.keys').style.opacity = 0;
+  }.bind(this));
+
   this.loadCurrentMoment(function() {
     this.loadPlayer(this.player, this.stage);
     this.update();
@@ -91,7 +104,6 @@ Game.prototype.start = function() {
 
     window.addEventListener('keydown', function(evt) {
       var key = evt.detail ? evt.detail : evt.keyCode;
-      this.stage.classList.remove('sleeping');
 
       if (~this.controls.left.indexOf(key)) {
         this.movingLeft = true;
@@ -124,7 +136,7 @@ Game.prototype.start = function() {
           setTimeout(function() {
             this.loadNextMoment(function() {
             }.bind(this));
-          }.bind(this), 2000);
+          }.bind(this), 0);
         }
       } else {
         var reflection = this.player.reflect(detail.id);
@@ -206,7 +218,7 @@ Game.prototype.loadMoment = function(moment, callback) {
   }
 
   this.stage.classList.add('sleeping');
-  document.getElementById('inspiration').innerText = this.player.reflections[this.player.letterReflections[moment]].text.textContent;
+  document.getElementById('inspiration').innerText = '"'+this.player.reflections[this.player.letterReflections[moment]].text.textContent+'"';
 
   momentObj.appendTo(this.stage, function() {
     var scene = this.loadCurrentScene();

@@ -5,6 +5,7 @@ function Player(id) {
   this.zoom = 1;
   this.reflections = {};
   this.reflection = null;
+  this.letterParts = 0;
 
   this.node.setAttribute('id', id);
   this.node.classList.add('player');

@@ -1,3 +1,4 @@
+var paragraphs = require('/js/letter.js');
 module.exports = new Game();
 
 function Game() {
@@ -131,18 +132,29 @@ Game.prototype.start = function() {
     window.addEventListener('inspect', function(evt) {
       var detail = evt.detail;
 
-      if (detail.name == 'Cama') {
+      if (detail.name == 'Cama' && this.currentMoment < 5) {
         if (window.confirm('Dormir?')) {
           setTimeout(function() {
             this.loadNextMoment(function() {
             }.bind(this));
           }.bind(this), 0);
         }
+      } else if (detail.name == 'Diário' && this.currentMoment == 5) {
+        document.getElementById('letter').classList.add('active');
+        var letter = document.querySelector('#letter textarea');
+
+        for (var i = 0; i < this.player.letterParts; i++) {
+          letter.value += paragraphs[i] + "\r\n\r\n";
+        }
       } else {
         var reflection = this.player.reflect(detail.id);
 
         if (reflection.letterReflection) {
           document.getElementById('whiteThing').classList.add('active');
+
+          if (this.player.letterParts <= this.currentMoment) {
+            this.player.letterParts++;
+          }
 
           setTimeout(function() {
             document.getElementById('whiteThing').classList.remove('active');

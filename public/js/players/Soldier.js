@@ -195,4 +195,6 @@ for (id in reflections) {
   Soldier.prototype.reflections[id] = reflection;
 }
 
+Soldier.prototype.letterReflections = letterReflections;
+
 module.exports = Soldier;

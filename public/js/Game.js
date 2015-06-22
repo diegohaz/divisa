@@ -2,7 +2,7 @@ module.exports = new Game();
 
 function Game() {
   this.updateRate = 10;
-  this.currentMoment = 5;
+  this.currentMoment = 0;
   this.stage  = null;
   this.player = null;
   this.movingRight = false;
@@ -91,6 +91,7 @@ Game.prototype.start = function() {
 
     window.addEventListener('keydown', function(evt) {
       var key = evt.detail ? evt.detail : evt.keyCode;
+      this.stage.classList.remove('sleeping');
 
       if (~this.controls.left.indexOf(key)) {
         this.movingLeft = true;
@@ -120,11 +121,8 @@ Game.prototype.start = function() {
 
       if (detail.name == 'Cama') {
         if (window.confirm('Dormir?')) {
-          this.stage.classList.add('sleeping');
-
           setTimeout(function() {
             this.loadNextMoment(function() {
-              this.stage.classList.remove('sleeping');
             }.bind(this));
           }.bind(this), 2000);
         }
@@ -206,6 +204,9 @@ Game.prototype.loadMoment = function(moment, callback) {
 
     var momentObj = this.moments[moment];
   }
+
+  this.stage.classList.add('sleeping');
+  document.getElementById('inspiration').innerText = this.player.reflections[this.player.letterReflections[moment]].text.textContent;
 
   momentObj.appendTo(this.stage, function() {
     var scene = this.loadCurrentScene();

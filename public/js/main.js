@@ -11,8 +11,3 @@ game.controls = {
 };
 
 game.start();
-
-document.getElementById('restart').addEventListener('click', function() {
-  game.restart();
-  game.stage.classList.remove('sleeping');
-});

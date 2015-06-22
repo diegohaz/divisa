@@ -43,7 +43,6 @@
 .keys {
   position: absolute;
   font-size: 1.5vw;
-  line-height: 2vw;
   bottom: 1vw;
   width: 100%;
 }
@@ -52,6 +51,7 @@
   display: inline-block;
   padding-left: 2.4vw;
   margin: 5vw;
+  line-height: 2vw;
 }
 
 .keys .click {
@@ -183,6 +183,23 @@
 
 .scene .label.active {
   visibility: visible;
+}
+
+#whiteThing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 990;
+  background-color: #fff;
+  opacity: 0;
+  transition: opacity 500ms;
+  pointer-events: none;
+}
+
+#whiteThing.active {
+  opacity: 1;
 }
 
 @media screen and (max-width: 768px) {

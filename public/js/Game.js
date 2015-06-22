@@ -140,6 +140,14 @@ Game.prototype.start = function() {
         }
       } else {
         var reflection = this.player.reflect(detail.id);
+
+        if (reflection.letterReflection) {
+          document.getElementById('whiteThing').classList.add('active');
+
+          setTimeout(function() {
+            document.getElementById('whiteThing').classList.remove('active');
+          }, 1000);
+        }
       }
     }.bind(this));
   }.bind(this));

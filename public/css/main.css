@@ -116,6 +116,18 @@
   overflow: hidden;
 }
 
+@-webkit-keyframes light {
+  0% { opacity: 1; }
+  10% { opacity: 0; }
+  80% { opacity: 0; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+#light {
+  -webkit-animation: light 1s steps(2) infinite;
+}
+
 @-webkit-keyframes playerMoving {
   0% { background-position: 25% 0; }
   100% { background-position: 125% 0; }
@@ -132,8 +144,8 @@
   background-image: url('/img/player.png');
   background-size: 500% 100%;
   background-position: 0 0;
-  width: 21.73vw;
-  height: 26.08vw;
+  width: 22.2vw;
+  height: 28.5vw;
   bottom: -1px;
   left: 16px;
   pointer-events: none;

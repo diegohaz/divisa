@@ -177,6 +177,8 @@ m[1].scenes[4].inspirations = [
   new Inspiration('bed2', 'Cama', '/img/m0/bed.svg', 568/13, 229/13, 815/13, 315/13),
 ];
 
+var light = new Item('/img/m0/lightt.svg', '100%', '100%');
+light.node.setAttribute('id', 'light');
 
 
 
@@ -220,7 +222,7 @@ m[2].scenes[1].inspirations = [
 ];
 m[2].scenes[1].foregrounds = [
   new Item('/img/m0/prison.svg', '100%', '100%'),
-  new Item('/img/m0/lightt.svg', '100%', '100%'),
+  light,
   new Inspiration('rat3', 'Rato', '/img/m0/rat.svg', 55/13, 24/13, 900/13, 400/13),
 ];
 
@@ -305,7 +307,7 @@ m[3].scenes[1].inspirations = [
 ];
 m[3].scenes[1].foregrounds = [
   new Item('/img/m0/prison.svg', '100%', '100%'),
-  new Item('/img/m0/lightt.svg', '100%', '100%'),
+  light,
 ];
 
 // Moment 1 Scene 3

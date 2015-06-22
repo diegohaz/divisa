@@ -2,7 +2,7 @@ module.exports = new Game();
 
 function Game() {
   this.updateRate = 10;
-  this.currentMoment = 0;
+  this.currentMoment = 1;
   this.stage  = null;
   this.player = null;
   this.movingRight = false;

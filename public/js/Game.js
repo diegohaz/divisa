@@ -238,7 +238,7 @@ Game.prototype.loadMoment = function(moment, callback) {
   }
 
   this.stage.classList.add('sleeping');
-  document.getElementById('inspiration').innerText = '"'+this.player.reflections[this.player.letterReflections[moment]].text.textContent+'"';
+  document.getElementById('inspiration').textContent = '"'+this.player.reflections[this.player.letterReflections[moment]].text.textContent+'"';
 
   momentObj.appendTo(this.stage, function() {
     var scene = this.loadCurrentScene();

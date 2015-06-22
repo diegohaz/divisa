@@ -124,8 +124,17 @@
   100% { opacity: 0; }
 }
 
+@-moz-keyframes light {
+  0% { opacity: 1; }
+  10% { opacity: 0; }
+  80% { opacity: 0; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 #light {
   -webkit-animation: light 1s steps(2) infinite;
+  -moz-animation: light 1s steps(2) infinite;
 }
 
 @-webkit-keyframes playerMoving {

@@ -86,32 +86,32 @@
 }
 
 @-webkit-keyframes playerMoving {
-  0% { background-position: 0 0; }
-  100% { background-position: 120% 0; }
+  0% { background-position: 25% 0; }
+  100% { background-position: 125% 0; }
 }
 
 @-moz-keyframes playerMoving {
-  0% { background-position: 0 0; }
-  100% { background-position: 120% 0; }
+  0% { background-position: 20% 0; }
+  100% { background-position: 80% 0; }
 }
 
 .player {
   position: absolute;
   background-repeat: no-repeat;
   background-image: url('/img/player.png');
-  background-size: 600% 303%;
-  background-position: 0 100%;
-  width: 15vw;
-  height: 30vw;
-  bottom: 0;
+  background-size: 500% 100%;
+  background-position: 0 0;
+  width: 21.73vw;
+  height: 26.08vw;
+  bottom: -1px;
   left: 16px;
   pointer-events: none;
   z-index: 999;
 }
 
 .player.moving {
-  -webkit-animation: playerMoving 1s steps(6) infinite;
-  -moz-animation: playerMoving 1s steps(6) infinite;
+  -webkit-animation: playerMoving 500ms steps(4) infinite;
+  -moz-animation: playerMoving 500ms steps(4) infinite;
 }
 
 .reflection {

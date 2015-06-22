@@ -306,7 +306,6 @@ m[3].scenes[1].inspirations = [
 m[3].scenes[1].foregrounds = [
   new Item('/img/m0/prison.svg', '100%', '100%'),
   new Item('/img/m0/lightt.svg', '100%', '100%'),
-  new Inspiration('rat4', 'Rato', '/img/m0/rat.svg', 55/13, 24/13, 900/13, 400/13),
 ];
 
 // Moment 1 Scene 3
@@ -346,6 +345,89 @@ m[3].scenes[4].inspirations = [
   new Inspiration('dogtag4', 'Dogtag', '/img/m0/dogtag.svg', 58/13, 36/13, 615/13, 295/13),
   new Inspiration('diary4', 'Diário', '/img/m0/diary.svg', 89/13, 83/13, 720/13, 420/13),
   new Inspiration('bed4', 'Cama', '/img/m0/bed.svg', 568/13, 229/13, 815/13, 315/13),
+];
+
+
+
+
+m[4] = new Moment('m4');
+m[4].loader = new Loader([
+  'car.svg', 'children.svg', 'crates.svg', 'house.svg', 'map.svg', 's2.svg',
+  'soldiers.svg', 'wall.svg', 'weapons.svg',
+], '/img/m4/');
+
+// Moment 1 Scene 1
+m[4].scenes[0] = new Scene('m4s0');
+m[4].scenes[0].zoom = 1;
+m[4].scenes[0].backgrounds = [
+  new Item('/img/m0/s0.svg', '100%', '100%')
+];
+m[4].scenes[0].inspirations = [
+  // id, name, img, width, height, x, y
+  new Inspiration('map5', 'Mapa', '/img/m4/map.svg', 389/13, 135/13, 825/13, 15/13),
+  new Inspiration('weapons5', 'Armas', '/img/m4/weapons.svg', 297/13, 171/13, 305/13, 70/13),
+  new Inspiration('window5', 'Janela', '/img/m3/window.svg', 152/13, 215/13, 69/13, 57/13),
+  new Inspiration('commander5', 'Comandante', '/img/m0/commander.svg', 164/13, 345/13, 830/13, 60/13),
+  new Inspiration('table5', 'Mesa', '/img/m0/table.svg', 371/13, 159/13, 800/13, 245/13),
+  new Inspiration('stone5', 'Pedras', '/img/m3/stone.svg', 175/13.42, 59/13.42, 34/13.42, 335/13.42)
+];
+m[4].scenes[0].foregrounds = [
+  new Item('/img/m0/straps.svg', '100%', '100%')
+];
+
+// Moment 1 Scene 2
+m[4].scenes[1] = new Scene('m4s1');
+m[4].scenes[1].zoom = .667;
+m[4].scenes[1].backgrounds = [
+  new Item('/img/m0/s1.svg', '100%', '100%')
+];
+m[4].scenes[1].inspirations = [
+  // id, name, img, width, height, x, y
+  new Inspiration('children5', 'Crianças', '/img/m4/children.svg', 1110/13, 194/13, 120/13, 200/13),
+  new Inspiration('light5', 'Lâmpada', '/img/m0/light.svg', 45/13, 104/13, 635/13, -30/13),
+];
+m[4].scenes[1].foregrounds = [
+  new Item('/img/m0/prison.svg', '100%', '100%'),
+  new Item('/img/m0/lightt.svg', '100%', '100%'),
+];
+
+// Moment 1 Scene 3
+m[4].scenes[2] = new Scene('m4s2');
+m[4].scenes[2].zoom = .333;
+m[4].scenes[2].backgrounds = [
+  new Item('/img/m4/s2.svg', '100%', '100%')
+];
+m[4].scenes[2].inspirations = [
+  // id, name, img, width, height, x, y
+  new Inspiration('wall5', 'Muro', '/img/m4/wall.svg', 385/13, 78/13, -30/13, 320/13),
+  new Inspiration('family5', 'Família', '/img/m3/family.svg', 85/13.42, 70/13.42, 828/13.42, 255/13.42),
+  new Inspiration('house5', 'Casa', '/img/m4/house.svg', 220/13, 220/13, 980/13, 130/13),
+];
+
+// Moment 1 Scene 4
+m[4].scenes[3] = new Scene('m4s3');
+m[4].scenes[3].zoom = .667;
+m[4].scenes[3].backgrounds = [
+  new Item('/img/m0/s3.svg', '100%', '100%')
+];
+m[4].scenes[3].inspirations = [
+  // id, name, img, width, height, x, y
+  new Inspiration('car5', 'Jipe', '/img/m4/car.svg', 285/13, 170/13, 170/13, 110/13),
+  new Inspiration('crates5', 'Caixotes', '/img/m2/crates.svg', 290/13, 115/13, 460/13, 175/13),
+  new Inspiration('tents5', 'Tendas', '/img/m0/tents.svg', 895/13, 430/13, 530/13, 110/13),
+  new Inspiration('soldiers5', 'Soldados', '/img/m4/soldiers.svg', 440/13, 315/13, 16/13, 215/13),
+];
+// Moment 1 Scene 5
+m[4].scenes[4] = new Scene('m4s4');
+m[4].scenes[4].zoom = 1;
+m[4].scenes[4].backgrounds = [
+  new Item('/img/m0/s4.svg', '100%', '100%')
+];
+m[4].scenes[4].inspirations = [
+  // id, name, img, width, height, x, y
+  new Inspiration('dogtag5', 'Dogtag', '/img/m0/dogtag.svg', 58/13, 36/13, 615/13, 295/13),
+  new Inspiration('diary5', 'Diário', '/img/m0/diary.svg', 89/13, 83/13, 720/13, 420/13),
+  new Inspiration('bed5', 'Cama', '/img/m0/bed.svg', 568/13, 229/13, 815/13, 315/13),
 ];
 
 

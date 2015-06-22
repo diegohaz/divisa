@@ -24,13 +24,12 @@ var reflections = {
   car1: 'Veloz e mortal...',
   crates1: 'São nossos mantimentos.',
 
-
-
-
   // Moment 1 Scene 5
   dogtag1: 'Eles são uns monstros de terem feito isso com você.',
   diary1: 'Quem pensa em escrever com tanta raiva?',
-  calendar1: 'Hoje foi o primeiro dia do processo de conquista.',
+
+
+
 
   // Moment 2 Scene 1
   map2: 'Esse povo ocupou a nossa terra e nós estamos tomando de volta.',

@@ -13,7 +13,7 @@ m[0].loader = new Loader([
   's0.svg', 'map.svg', 'weapons.svg', 'window.svg', 'table.svg', 'straps.svg',
   's1.svg', 'prison.svg', 'light.svg', 'children.svg', 'lightt.svg',
   's2.svg', 'wall.svg', 'family.svg', 'house.svg',
-  's3.svg', 'tents.svg', 'creates.svg', 'car.svg',
+  's3.svg', 'tents.svg', 'creates.svg', 'car.svg', 'soldiers.svg',
   's4.svg', 'dogtag.svg', 'bed.svg', 'diary.svg'
 ], '/img/m0/');
 
@@ -76,6 +76,7 @@ m[0].scenes[3].inspirations = [
   new Inspiration('car1', 'Jipe', '/img/m0/car.svg', 285/13, 170/13, 170/13, 110/13),
   new Inspiration('crates1', 'Caixotes', '/img/m0/crates.svg', 290/13, 115/13, 460/13, 175/13),
   new Inspiration('tents1', 'Tendas', '/img/m0/tents.svg', 895/13, 430/13, 530/13, 110/13),
+  new Inspiration('soldiers1', 'Soldados', '/img/m0/soldiers.svg', 440/13, 315/13, 16/13, 215/13),
 ];
 // Moment 1 Scene 5
 m[0].scenes[4] = new Scene('m0s4');

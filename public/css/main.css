@@ -117,11 +117,11 @@
 .reflection {
   position: absolute;
   bottom: 100%;
-  width: 200%;
+  width: 150%;
   background-color: #fff;
   border-radius: .5vw;
   padding: 1vw;
-  margin: 0 -50% 1vw;
+  margin: 0 -25% 1vw;
   text-align: center;
   opacity: 0;
   transition: opacity 200ms;
